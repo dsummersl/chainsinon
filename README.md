@@ -3,6 +3,8 @@ chainsinon
 
 A [Sinon](http://sinonjs.org) utility function to return complex stubbed objects.
 
+[![build status](https://secure.travis-ci.org/dsummersl/chainsinon.png)](http://travis-ci.org/dsummersl/chainsinon)
+
 Install
 =======
 
