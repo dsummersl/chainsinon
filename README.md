@@ -37,4 +37,17 @@ list of functions on an object. For example:
     mockObject["mainMethod"].called;    // == true
     mockObject["mainMethod"].callCount; // == 3 (three times so far)
 
+This also works for an arbitrary number of methods:
+
+    var chainsinon = require("chainsinon");
+
+    var mockObject = chainsinon([
+        "one.subOne",
+        "two"
+    ]);
+
+    mockObject.one().subOne();
+    mockObject.two();
+
+
 See test cases for more examples.
