@@ -20,10 +20,10 @@ var sinon = require("sinon");
 //   one.twoOBj: [ Object == one.two ]
 // }
 var stubCalls = function(firstParam, additionalParams) {
-	var callstring, i, methodsFromObject, object;
+	var callstring;
 	if (additionalParams == null) additionalParams = null;
-	object = {};
-	methodsFromObject = null;
+	var object = {};
+	var methodsFromObject = null;
 	if (additionalParams === null) {
 		callstring = firstParam;
 	} else {
@@ -31,7 +31,7 @@ var stubCalls = function(firstParam, additionalParams) {
 		callstring = additionalParams;
 	}
 	if (Array.isArray(callstring)) {
-		i = 0;
+		var i = 0;
 		while (i < callstring.length) {
 			stubChainedCall(object, callstring[i], methodsFromObject);
 			i++;
@@ -43,12 +43,11 @@ var stubCalls = function(firstParam, additionalParams) {
 };
 
 var stubChainedCall = function(object, callstring, methodsFromObject) {
-	var arrayOfMethods, i, parentObject, path;
 	if (methodsFromObject == null) methodsFromObject = null;
-	arrayOfMethods = callstring.split(".");
-	path = "";
-	parentObject = new Object;
-	i = 0;
+	var arrayOfMethods = callstring.split(".");
+	var path = "";
+	var parentObject = new Object;
+	var i = 0;
 	while (i < arrayOfMethods.length) {
 		path += arrayOfMethods[i];
 		if (!(path in object)) {
