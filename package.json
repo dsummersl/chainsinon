@@ -1,8 +1,8 @@
 {
   "name": "chainsinon",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A sinon utility function to return complex stubbed objects.",
-  "main": "chaiSinon.js",
+  "main": "chainSinon.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha test"
   },

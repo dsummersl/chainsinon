@@ -3,6 +3,13 @@ chainsinon
 
 A [Sinon](http://sinonjs.org) utility function to return complex stubbed objects.
 
+Install
+=======
+
+Use npm:
+
+    npm install --save-dev chainsinon
+
 Usage
 =====
 
