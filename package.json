@@ -1,0 +1,32 @@
+{
+  "name": "chainsinon",
+  "version": "0.1.0",
+  "description": "A sinon utility function to return complex stubbed objects.",
+  "main": "chaiSinon.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dsummersl/chainsinon.git"
+  },
+  "keywords": [
+    "sinon",
+    "testing",
+    "stub",
+    "mock"
+  ],
+  "author": "Dane Summers",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dsummersl/chainsinon/issues"
+  },
+  "homepage": "https://github.com/dsummersl/chainsinon",
+  "devDependencies": {
+    "mocha": "^1.21.4",
+    "chai": "^1.9.1"
+  },
+  "dependencies": {
+    "sinon": "^1.10.3"
+  }
+}
