@@ -28,50 +28,42 @@ describe("chainSinon", function() {
 		expect(stubs["anotherObj"]).to.be.an("object");
 	});
 
-	it('stubs methods of an object', function() {
+	describe("custom objects", function() {
 		var TestObject = (function() {
-
 			function TestObject() {}
-
 			TestObject.prototype.a = function() {
 				return 'a';
 			};
-
 			TestObject.prototype.b = function() {
 				return 'b';
 			};
-
 			return TestObject;
-
 		})();
-		var obj = new TestObject();
-		var stubs = chainSinon(obj, ["a", "b"]);
-		stubs.a.returns(4);
-		expect(stubs.aObj).to.be.an("object");
-		expect(stubs.bObj).to.be.an("object");
-		expect(obj.a()).to.equal(4);
-	});
 
-	return it('stubs sub-methods of an object', function() {
-		var TestObject = (function() {
+		it('stubs methods of the object', function() {
+			var obj = new TestObject();
+			var stubs = chainSinon(obj, ["a", "b"]);
+			stubs.a.returns(4);
+			expect(stubs.aObj).to.be.an("object");
+			expect(stubs.bObj).to.be.an("object");
+			expect(obj.a()).to.equal(4);
+		});
 
-			function TestObject() {}
+		it('stubs sub-methods of the object', function() {
+			var obj = new TestObject();
+			var stubs = chainSinon(obj, ["a.b.c", "b"]);
+			stubs['a.b.c'].returns(4);
+			expect(stubs["a.b.cObj"]).to.be.an("object");
+			expect(obj.a().b().c()).to.equal(4);
+		});
 
-			TestObject.prototype.a = function() {
-				return 'a';
-			};
-
-			TestObject.prototype.b = function() {
-				return 'b';
-			};
-
-			return TestObject;
-
-		})();
-		var obj = new TestObject();
-		var stubs = chainSinon(obj, ["a.b.c", "b"]);
-		stubs['a.b.c'].returns(4);
-		expect(stubs["a.b.cObj"]).to.be.an("object");
-		expect(obj.a().b().c()).to.equal(4);
+		it('restores to the original implementation', function() {
+			var obj = new TestObject();
+			var stubs = chainSinon(obj, "a.b.c");
+			// restoring brings back the original implementation:
+			expect(obj.a()).to.be.an("object");
+			obj.a.restore();
+			expect(obj.a()).to.equal('a');
+		});
 	});
 });

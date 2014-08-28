@@ -53,4 +53,27 @@ mockObject.one().subOne();
 mockObject.two();
 ```
 
+Also, you can use this library to nest an arbitrary object in a nested way:
+
+```javascript
+var chainsinon = require("chainsinon");
+
+function TestObject() {}
+TestObject.prototype.a = function() { return 'a'; };
+
+var instance = new TestObject();
+// instance returns the expected value:
+instance.a(); // == a
+
+// now its mocked:
+var mockObject = chainsinon(instance, "a");
+mockObject.a.returns(4);
+mockObject.a(); // == 4
+
+// instance returns the expected value:
+mockObject.a.restore();
+mockObject.a(); // == a
+```
+
+
 See test cases for more examples.
